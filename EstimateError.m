@@ -1,8 +1,12 @@
 function error = EstimateError(N, timeDisc, TempEx, TempNum)
 
-SciFormat = '%10.5e';
 TempExForComp = TempEx(timeDisc);
-error = sqrt(sum((TempExForComp - TempNum).^2)) / N;
-result = [char(13) 'Error: ' num2str(error, SciFormat) char(13)];
 
-disp(result);
+% Calculate variance and standard deviation of the error:
+var = sum((TempExForComp(2:end) - TempNum(2:end)).^2) / (N - 1);
+error = sqrt(var);
+
+% Present the result
+SciFormat = '%10.5e';
+errorStr = num2str(error, SciFormat);
+fprintf('\nN =\t\t%d\nError =\t%s\n\n', N, errorStr);

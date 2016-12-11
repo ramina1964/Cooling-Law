@@ -3,8 +3,10 @@
 clear;
 close all;
 
+N = 128;
+
 % Problem constants of Newton's Law of Cooling
-[k, TempAmb, Temp0, tStart, tMax, N] = ProblemConstants;
+[k, TempAmb, Temp0, tStart, tMax] = ProblemConstants;
 
 % Problem's analytical solution
 [TempExact, TempAsymp] = AnalyticalSol(k, TempAmb, Temp0);
